@@ -66,3 +66,38 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+# inside postgres
+sudo -u postgres psql data_base
+createuser --interactive
+OR
+CREATE USER user_name WITH PASSWORD 'new_password';
+SET ROLE user_name
+//ALTER USER user_name WITH PASSWORD 'new_password';
+createdb new_db
+OR
+sudo -u user_name createdb sammy
+\du (users), \dt (tables), \l (databases)
+
+#start service
+sudo pg_lsclusters
+sudo pg_lsclusters 13 main start\stop\restart
+
+/*
+CREATE TABLE users (id serial PRIMARY KEY, name VARCHAR(100), email text UNIQUE NOT NULL, joined TIMESTAMP NOT NULL);
+INSERT INTO table_name(id, name, email, joined) VALUES ('125', 'dan', 'dan@email.com', '2016-06-22 19:10:25-07');
+
+CREATE TABLE login (id serial PRIMARY KEY, hash varchar(100) NOT NULL, email text UNIQUE NOT NULL);
+
+CREATE TABLE saved_items (id serial PRIMARY KEY, user_id serial NOT NULL, name text NOT NULL, post text NOT NULL, img_url text NOT NULL, created_at TIMESTAMP NOT NULL, updated_at TIMESTAMP NOT NULL);
+WITH num_items AS (SELECT COUNT(*) FROM saved_items WHERE user_id=6) INSERT INTO saved_items(user_id, name, post, img_url, created_at, updated_at) VALUES ('6', CONCAT('Draft ', (select count from num_items)+1), 'This is a post', 'url', '2016-06-22 19:10:25-07', '2016-06-22 19:10:25-07');
+
+WITH max_id AS (SELECT MAX(id) FROM saved_items WHERE user_id = $1) INSERT INTO saved_items(user_id, name, post, img_url, created_at, updated_at) VALUES ($2, CONCAT('Draft ', (select max from max_id)+1), $3, $4, $5, $6)  RETURNING *", [user_id, user_id, text, img_url, new Date(), new Date()]
+
+sudo mkdir -p /home/dan/.linuxbrew/etc /home/dan/.linuxbrew/include /home/dan/.linuxbrew/lib /home/dan/.linuxbrew/opt /home/dan/.linuxbrew/sbin /home/dan/.linuxbrew/share /home/dan/.linuxbrew/var/homebrew/linked /home/dan/.linuxbrew/Cellar
+sudo chown -R $(whoami) /home/dan/.linuxbrew/etc /home/dan/.linuxbrew/include /home/dan/.linuxbrew/lib /home/dan/.linuxbrew/opt /home/dan/.linuxbrew/sbin /home/dan/.linuxbrew/share /home/dan/.linuxbrew/var/homebrew/linked /home/dan/.linuxbrew/Cellar
+*/
+
+TODO:
+- Add error handling with every API call - from UI side too
+- Paging - get more than 10 images on a search

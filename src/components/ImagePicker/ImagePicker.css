@@ -1,0 +1,11 @@
+.image-gallery-image {
+  width: 400px;
+  height: 400px;
+}
+
+.image-gallery-slide-wrapper {
+  width: 600px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
