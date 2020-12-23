@@ -124,7 +124,7 @@ body, html {
 }
 
 .react-confirm-alert-overlay {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .modalBtn {
